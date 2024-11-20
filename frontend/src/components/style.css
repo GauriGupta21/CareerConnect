@@ -1,0 +1,32 @@
+/* styles.css or your existing CSS file */
+
+/* Fade-in animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px); /* Slide up from below */
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Hero section animation */
+.hero-section {
+    animation: fadeIn 0.5s ease-in-out; /* Adjust duration as needed */
+}
+
+/* Input field focus effect */
+input:focus {
+    border: 2px solid #38c2c2; /* Change border color on focus */
+    box-shadow: 0 0 5px rgba(56, 194, 194, 0.5); /* Light glow effect */
+    transition: border 0.3s, box-shadow 0.3s; /* Smooth transition */
+}
+
+/* Button hover effect */
+button:hover {
+    background-color: #2aa4a4; /* Darker shade for hover */
+    transform: scale(1.05); /* Slightly enlarge button on hover */
+    transition: background-color 0.3s, transform 0.3s; /* Smooth transition */
+}
