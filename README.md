@@ -5,30 +5,53 @@ CareerConnect is a job portal web application designed to bridge the gap between
 **Features**
 **Job Seekers**
 Register and create a profile.
+
 Search and filter job opportunities.
+
 Apply for jobs directly through the platform.
+
 Track the status of job applications.
+
+
 **Employers**
 Register and manage a company profile.
+
 Post job openings with detailed descriptions.
+
 View and manage applications for posted jobs.
+
+
 **General**
 Secure authentication and authorization.
+
 Admin dashboard for managing users and content.
+
 Responsive design for seamless usage across devices.
 
+
 **Technologies Used**
+
 Frontend
+
 HTML, CSS, JavaScript
+
 React.js (for UI components and state management)
+
+
 Backend
+
 Node.js (for server-side logic)
+
 Express.js (for RESTful API development)
+
 MongoDB (for data storage)
+
 Other Tools
+
 JWT (for secure user authentication)
+
 Multer (for handling file uploads)
-OpenAI API (for advanced features, e.g., cover letter generation)
+
 Setup and Installation
 Prerequisites
 Node.js (version 16 or above)
