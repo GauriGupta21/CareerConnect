@@ -101,22 +101,25 @@ Backend: http://localhost:5000
 
 Contributing
 Contributions are welcome! Please follow these steps:
+**
+Fork the repository.**
 
-Fork the repository.
 Create a new branch:
-bash
-Copy code
+
 git checkout -b feature-name
+
 Make your changes and commit:
-bash
-Copy code
+
+
 git commit -m "Description of changes"
+
 Push to your branch:
-bash
-Copy code
+
 git push origin feature-name
+
 Submit a pull request.
-License
+
+**License**
 This project is licensed under the MIT License. See the LICENSE file for more details.
 
 Contact
