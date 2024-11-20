@@ -126,4 +126,4 @@ Contact
 For any questions or suggestions, feel free to reach out:
 
 Author: Gauri Gupta
-Email: your-email@example.com
+Email: agrahariya212gmail.com
