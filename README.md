@@ -1,21 +1,23 @@
-CareerConnect
+**CareerConnect**
+
 CareerConnect is a job portal web application designed to bridge the gap between job seekers and employers. This platform enables users to search for jobs, apply online, and manage their applications, while employers can post job openings and manage candidate applications.
 
-Features
-Job Seekers
+**Features**
+**Job Seekers**
 Register and create a profile.
 Search and filter job opportunities.
 Apply for jobs directly through the platform.
 Track the status of job applications.
-Employers
+**Employers**
 Register and manage a company profile.
 Post job openings with detailed descriptions.
 View and manage applications for posted jobs.
-General
+**General**
 Secure authentication and authorization.
 Admin dashboard for managing users and content.
 Responsive design for seamless usage across devices.
-Technologies Used
+
+**Technologies Used**
 Frontend
 HTML, CSS, JavaScript
 React.js (for UI components and state management)
