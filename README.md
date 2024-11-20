@@ -98,6 +98,7 @@ Open the application in your browser:
 Frontend: http://localhost:3000
 
 Backend: http://localhost:5000
+
 Contributing
 Contributions are welcome! Please follow these steps:
 
