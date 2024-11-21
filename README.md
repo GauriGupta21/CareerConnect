@@ -53,3 +53,20 @@ CareerConnect is a job portal web application designed to bridge the gap between
    MONGO_URI=your_mongodb_connection_string
    JWT_SECRET=your_jwt_secret_key
    OPENAI_API_KEY=your_openai_api_key
+
+## **Steps to Run Locally**
+
+### Clone the repository:
+```bash
+git clone https://github.com/GauriGupta21/CareerConnect.git
+cd CareerConnect
+
+<br>
+Install dependencies for both frontend and backend:
+# Navigate to the backend folder
+cd backend
+npm install
+
+# Navigate to the frontend folder
+cd ../frontend
+npm install
