@@ -61,9 +61,9 @@ This project is licensed under the MIT License. See the LICENSE file for more de
 ## **Contact**
 For any questions or suggestions, feel free to reach out:
 
-Author: Gauri Gupta
-Email: agrahariya21@gmail.com
-GitHub: GauriGupta21
+Author: Gauri Gupta<br/>
+Email: agrahariya21@gmail.com<br/>
+GitHub: GauriGupta21<br/>
 
 ## **Steps to Run Locally**
 
