@@ -71,20 +71,19 @@ npm install
 cd ../frontend
 npm install
 
-Start the backend server:
-bash
-Copy code
+# Start the backend server:
 cd backend
 npm start
-**Start the frontend server:**
+
+# Start the frontend server:
 cd ../frontend
 npm start
 
-**Open the application in your browser:**
+# Open the application in your browser:
 Frontend: http://localhost:3000
 Backend: http://localhost:5000
 
-**Contributing**
+# Contributing
 Contributions are welcome! Please follow these steps:
 
 Fork the repository.
