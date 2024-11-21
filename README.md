@@ -60,7 +60,6 @@ This project is licensed under the MIT License. See the LICENSE file for more de
 <br/>
 
 ## **Contact**
-
 <br/>
 For any questions or suggestions, feel free to reach out:
 
