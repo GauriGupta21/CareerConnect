@@ -58,7 +58,9 @@ CareerConnect is a job portal web application designed to bridge the gap between
 This project is licensed under the MIT License. See the LICENSE file for more details.
 
 <br/>
+
 ## **Contact**
+
 <br/>
 For any questions or suggestions, feel free to reach out:
 
