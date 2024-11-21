@@ -53,6 +53,17 @@ CareerConnect is a job portal web application designed to bridge the gap between
    MONGO_URI=your_mongodb_connection_string
    JWT_SECRET=your_jwt_secret_key
    OPENAI_API_KEY=your_openai_api_key
+   
+## **License**
+This project is licensed under the MIT License. See the LICENSE file for more details.
+
+<br/>
+## **Contact**
+For any questions or suggestions, feel free to reach out:
+
+Author: Gauri Gupta
+Email: agrahariya21@gmail.com
+GitHub: GauriGupta21
 
 ## **Steps to Run Locally**
 
@@ -88,14 +99,13 @@ Contributions are welcome! Please follow these steps:
 
 Fork the repository.
 Create a new branch:
-
 git checkout -b feature-name
+
 Make your changes and commit:
-
 git commit -m "Description of changes"
+
 Push to your branch:
-
 git push origin feature-name
-Submit a pull request.
 
-```bash
+
+
