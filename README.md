@@ -61,7 +61,7 @@ CareerConnect is a job portal web application designed to bridge the gap between
 git clone https://github.com/GauriGupta21/CareerConnect.git
 cd CareerConnect
 
-<br>
+
 Install dependencies for both frontend and backend:
 # Navigate to the backend folder
 cd backend
@@ -70,3 +70,48 @@ npm install
 # Navigate to the frontend folder
 cd ../frontend
 npm install
+
+Start the backend server:
+bash
+Copy code
+cd backend
+npm start
+Start the frontend server:
+bash
+Copy code
+cd ../frontend
+npm start
+Open the application in your browser:
+Frontend: http://localhost:3000
+Backend: http://localhost:5000
+<br/>
+Contributing
+Contributions are welcome! Please follow these steps:
+
+Fork the repository.
+Create a new branch:
+bash
+Copy code
+git checkout -b feature-name
+Make your changes and commit:
+bash
+Copy code
+git commit -m "Description of changes"
+Push to your branch:
+bash
+Copy code
+git push origin feature-name
+Submit a pull request.
+<br/>
+License
+This project is licensed under the MIT License. See the LICENSE file for more details.
+
+<br/>
+Contact
+For any questions or suggestions, feel free to reach out:
+
+Author: Gauri Gupta
+Email: your-email@example.com
+GitHub: GauriGupta21
+markdown
+Copy code
