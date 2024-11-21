@@ -76,42 +76,27 @@ bash
 Copy code
 cd backend
 npm start
-Start the frontend server:
-bash
-Copy code
+**Start the frontend server:**
 cd ../frontend
 npm start
-Open the application in your browser:
+
+**Open the application in your browser:**
 Frontend: http://localhost:3000
 Backend: http://localhost:5000
-<br/>
-Contributing
+
+**Contributing**
 Contributions are welcome! Please follow these steps:
 
 Fork the repository.
 Create a new branch:
-bash
-Copy code
+
 git checkout -b feature-name
 Make your changes and commit:
-bash
-Copy code
+
 git commit -m "Description of changes"
 Push to your branch:
-bash
-Copy code
+
 git push origin feature-name
 Submit a pull request.
-<br/>
-License
-This project is licensed under the MIT License. See the LICENSE file for more details.
 
-<br/>
-Contact
-For any questions or suggestions, feel free to reach out:
-
-Author: Gauri Gupta
-Email: your-email@example.com
-GitHub: GauriGupta21
-markdown
-Copy code
+```bash
