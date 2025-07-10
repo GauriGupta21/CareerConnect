@@ -18,7 +18,7 @@ const Saved = () => {
             ) : (
                 <ul className="space-y-4">
                     {savedJobs.map((job) => (
-                        <li key={job._id} className="border rounded-lg shadow-md bg-white p-4 flex justify-between items-start transition-transform transform hover:scale-105">
+                        <li key={job._id} className="border rounded-lg shadow-md bg-white p-4 flex justify-between items-start transition-transform hover:scale-104">
                             <div className="flex-1">
                                 <h1 className="font-medium text-lg md:text-xl text-gray-900">{job?.company?.name}</h1>
                                 <p className="text-sm text-gray-500">Location: India</p>

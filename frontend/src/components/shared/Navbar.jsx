@@ -1,7 +1,8 @@
+import { useState } from 'react'
 import { Popover, PopoverContent, PopoverTrigger } from '../ui/popover'
 import { Button } from '../ui/button'
 import { Avatar, AvatarImage } from '../ui/avatar'
-import { LogOut, User2 } from 'lucide-react'
+import { LogOut, User2, Menu } from 'lucide-react'
 import { Link, useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import axios from 'axios'
@@ -13,6 +14,7 @@ const Navbar = () => {
     const { user } = useSelector(store => store.auth);
     const dispatch = useDispatch();
     const navigate = useNavigate();
+    const [isOpen, setIsOpen] = useState(false);
 
     const logoutHandler = async () => {
         try {
@@ -27,13 +29,19 @@ const Navbar = () => {
             toast.error(error.response.data.message);
         }
     }
+
     return (
-        <div className='bg-white'>
+        <div className='bg-white px-4'>
             <div className='flex items-center justify-between mx-auto max-w-7xl h-16'>
-                <div>
-                    <h1 className='text-2xl font-bold'>Career<span className='text-[#38c2c2]'>Connect</span></h1>
+                <h1 className='text-2xl font-bold'>Career<span className='text-[#38c2c2]'>Connect</span></h1>
+
+                {/* Hamburger menu icon for mobile */}
+                <div className="sm:hidden">
+                    <Menu className='cursor-pointer' onClick={() => setIsOpen(!isOpen)} />
                 </div>
-                <div className='flex items-center gap-12'>
+
+                {/* Desktop Menu */}
+                <div className='hidden sm:flex items-center gap-12'>
                     <ul className='flex font-medium items-center gap-5'>
                         {
                             user && user.role === 'recruiter' ? (
@@ -47,14 +55,9 @@ const Navbar = () => {
                                     <li><Link to="/jobs">Jobs</Link></li>
                                     <li><Link to="/browse">Browse</Link></li>
                                     <li><Link to="/saved">Saved</Link></li>
-
-
-                                    
                                 </>
                             )
                         }
-
-
                     </ul>
                     {
                         !user ? (
@@ -89,7 +92,6 @@ const Navbar = () => {
                                                     </div>
                                                 )
                                             }
-
                                             <div className='flex w-fit items-center gap-3 cursor-pointer'>
                                                 <LogOut />
                                                 <Button onClick={logoutHandler} variant="link">Logout</Button>
@@ -100,10 +102,52 @@ const Navbar = () => {
                             </Popover>
                         )
                     }
-
                 </div>
             </div>
 
+            {/* Mobile Slide Menu */}
+            {isOpen && (
+                <div className="sm:hidden mt-4 flex flex-col gap-4 transition-all duration-300">
+                    <ul className='flex flex-col font-medium gap-4'>
+                        {
+                            user && user.role === 'recruiter' ? (
+                                <>
+                                    <li><Link to="/admin/companies" onClick={() => setIsOpen(false)}>Companies</Link></li>
+                                    <li><Link to="/admin/jobs" onClick={() => setIsOpen(false)}>Jobs</Link></li>
+                                </>
+                            ) : (
+                                <>
+                                    <li><Link to="/" onClick={() => setIsOpen(false)}>Home</Link></li>
+                                    <li><Link to="/jobs" onClick={() => setIsOpen(false)}>Jobs</Link></li>
+                                    <li><Link to="/browse" onClick={() => setIsOpen(false)}>Browse</Link></li>
+                                    <li><Link to="/saved" onClick={() => setIsOpen(false)}>Saved</Link></li>
+                                </>
+                            )
+                        }
+                    </ul>
+                    {
+                        !user ? (
+                            <div className='flex flex-col gap-2'>
+                                <Link to="/login" onClick={() => setIsOpen(false)}><Button variant="outline" className='w-full'>Login</Button></Link>
+                                <Link to="/signup" onClick={() => setIsOpen(false)}><Button className="bg-[#38c2c2] hover:bg-[#38c2ab] w-full">Signup</Button></Link>
+                            </div>
+                        ) : (
+                            <div className='flex flex-col gap-4'>
+                                {user?.role === 'student' && (
+                                    <div className='flex items-center gap-3'>
+                                        <User2 />
+                                        <Button variant="link" onClick={() => setIsOpen(false)}> <Link to="/profile">View Profile</Link></Button>
+                                    </div>
+                                )}
+                                <div className='flex items-center gap-3'>
+                                    <LogOut />
+                                    <Button variant="link" onClick={() => { logoutHandler(); setIsOpen(false); }}>Logout</Button>
+                                </div>
+                            </div>
+                        )
+                    }
+                </div>
+            )}
         </div>
     )
 }

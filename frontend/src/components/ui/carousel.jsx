@@ -141,21 +141,24 @@ const CarouselPrevious = React.forwardRef(({ className, variant = "outline", siz
 
   return (
     <Button
-      ref={ref}
-      variant={variant}
-      size={size}
-      className={cn(
-        "absolute h-8 w-8 rounded-full",
-        orientation === "horizontal" ? "-left-12 top-1/2 -translate-y-1/2" : "-top-12 left-1/2 -translate-x-1/2 rotate-90",
-        className
-      )}
-      disabled={!canScrollPrev}
-      onClick={scrollPrev}
-      {...props}
-    >
-      <ArrowLeft className="h-4 w-4" />
-      <span className="sr-only">Previous slide</span>
-    </Button>
+  ref={ref}
+  type="button" // ⭐⭐ important
+  variant={variant}
+  size={size}
+  className={cn(
+    "absolute h-8 w-8 rounded-full focus:outline-none focus:ring-2 focus:ring-[#38c2c2]",
+    orientation === "horizontal"
+      ? "-left-12 top-1/2 -translate-y-1/2"
+      : "-top-12 left-1/2 -translate-x-1/2 rotate-90",
+    className
+  )}
+  disabled={!canScrollPrev}
+  onClick={scrollPrev}
+  {...props}
+>
+  <ArrowLeft className="h-4 w-4" />
+  <span className="sr-only">Previous slide</span>
+</Button>
   );
 });
 CarouselPrevious.displayName = "CarouselPrevious";
@@ -167,6 +170,7 @@ const CarouselNext = React.forwardRef(({ className, variant = "outline", size = 
     <Button
       ref={ref}
       variant={variant}
+      type="button" // ⭐⭐ important
       size={size}
       className={cn(
         "absolute h-8 w-8 rounded-full",
