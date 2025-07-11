@@ -29,7 +29,7 @@ const RadioGroupItem = React.forwardRef(({ className, ...props }, ref) => {
 })
 RadioGroupItem.displayName = RadioGroupPrimitive.Item.displayName
 RadioGroupItem.propTypes = {
-    className: PropTypes.string, // className is optional
+    className: PropTypes.string,
   };
 
 export { RadioGroup, RadioGroupItem }

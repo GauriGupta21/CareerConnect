@@ -28,6 +28,9 @@ app.use(cors(corsOptions));
 const upload = multer({ dest: 'uploads/' }); // Temporary folder for uploaded files
 
 const PORT = process.env.PORT || 3000;
+app.get("/", (req, res) => {
+    res.send("API is running. Use /api/v1/* routes.");
+});
 
 // API routes
 app.use("/api/v1/user", userRoute);

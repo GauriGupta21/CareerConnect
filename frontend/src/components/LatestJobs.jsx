@@ -1,6 +1,45 @@
 import LatestJobCards from './LatestJobCards';
 import { useSelector } from 'react-redux';
 
+const staticJobs = [
+    {
+        _id: 'static1',
+        company: { name: 'Google' },
+        title: 'Frontend Developer',
+        description: 'Work on cutting edge tech with Google teams.',
+        position: '3',
+        jobType: 'Full-Time',
+        salary: 30,
+    },
+    {
+        _id: 'static2',
+        company: { name: 'Microsoft' },
+        title: 'Backend Engineer',
+        description: 'Build scalable backend systems.',
+        position: '2',
+        jobType: 'Full-Time',
+        salary: 28,
+    },
+    {
+        _id: 'static3',
+        company: { name: 'Amazon' },
+        title: 'DevOps Engineer',
+        description: 'Manage CI/CD pipelines and cloud infrastructure.',
+        position: '4',
+        jobType: 'Contract',
+        salary: 35,
+    },
+    {
+        _id: 'static4',
+        company: { name: 'Netflix' },
+        title: 'Data Scientist',
+        description: 'Analyze viewer data to improve recommendations.',
+        position: '1',
+        jobType: 'Remote',
+        salary: 40,
+    },
+];
+
 const LatestJobs = () => {
     const { allJobs } = useSelector(store => store.job);
 
@@ -18,23 +57,32 @@ const LatestJobs = () => {
                 </p>
             </div>
 
-<div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6'>
-    {
-        allJobs.length <= 0 
-        ? <span className='text-gray-500 text-center col-span-full'>No Job Available</span> 
-        : allJobs.slice(0, 6).map((job) => (
-            <div 
-                key={job._id} 
-                className='h-80 flex flex-col transform hover:-translate-y-1 
-                          transition duration-300 ease-in-out hover:shadow-xl 
-                          rounded-2xl overflow-hidden bg-white'
-            >
-                <LatestJobCards job={job} className="h-full flex-1" />
-            </div>
-        ))
-    }
-</div>
+            <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6'>
+                {/* static jobs first */}
+                {staticJobs.map(job => (
+                    <div
+                        key={job._id}
+                        className='h-80 flex flex-col transform hover:-translate-y-1 
+                        transition duration-300 ease-in-out hover:shadow-xl 
+                        rounded-2xl overflow-hidden bg-white'>
+                        <LatestJobCards job={{ ...job, position: String(job.position) }} />
+                    </div>
+                ))}
 
+                {/* dynamic jobs */}
+                {allJobs.length <= 0
+                    ? <span className='text-gray-500 text-center col-span-full'>No Job Available</span>
+                    : allJobs.slice(0, 6).map((job) => (
+                        <div
+                            key={job._id}
+                            className='h-80 flex flex-col transform hover:-translate-y-1 
+                            transition duration-300 ease-in-out hover:shadow-xl 
+                            rounded-2xl overflow-hidden bg-white'>
+                           <LatestJobCards job={{ ...job, position: String(job.position) }} />
+                        </div>
+                    ))
+                }
+            </div>
         </div>
     );
 }

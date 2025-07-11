@@ -13,11 +13,13 @@ const HeroSection = () => {
     const navigate = useNavigate();
 
     const searchJobHandler = () => {
+        console.log("Dispatching searchedQuer1y:", query)
         const trimmedQuery = query.trim();
         if (!trimmedQuery) {
             toast.warning("Please enter a keyword to search");
             return;
         }
+        console.log("Dispatching searchedQuery:", query)
         dispatch(setSearchedQuery(trimmedQuery));
         navigate("/browse");
     }
@@ -43,6 +45,7 @@ const HeroSection = () => {
 <div className="flex w-full max-w-xl mx-auto mt-8 border border-gray-300 rounded-full overflow-hidden shadow-sm focus-within:ring-2 focus-within:ring-[#38c2c2] transition">
     <input
         type="text"
+         value={query}  
         placeholder="Find your dream jobs"
         onChange={(e) => setQuery(e.target.value)}
         onKeyDown={handleKeyDown}

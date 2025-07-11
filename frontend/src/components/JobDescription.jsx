@@ -63,13 +63,13 @@ const JobDescription = () => {
                     <div>
                         <h1 className='text-3xl font-extrabold text-gray-800'>{singleJob?.title}</h1>
                         <div className='flex flex-wrap gap-3 mt-4'>
-                            <Badge className='text-blue-700 font-medium px-3 py-1' variant="ghost">
+                            <Badge className='text-blue-700 font-medium px-3 py-1' variant="outline">
                                 {singleJob?.postion} Positions
                             </Badge>
-                            <Badge className='text-[#F83002] font-medium px-3 py-1' variant="ghost">
+                            <Badge className='text-[#F83002] font-medium px-3 py-1' variant="outline">
                                 {singleJob?.jobType}
                             </Badge>
-                            <Badge className='text-[#38c2c2] font-medium px-3 py-1' variant="ghost">
+                            <Badge className='text-[#38c2c2] font-medium px-3 py-1' variant="outline">
                                 {singleJob?.salary} LPA
                             </Badge>
                         </div>
