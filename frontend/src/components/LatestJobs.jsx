@@ -71,7 +71,7 @@ const LatestJobs = () => {
 
                 {/* dynamic jobs */}
                 {allJobs.length <= 0
-                    ? <span className='text-gray-500 text-center col-span-full'>No Job Available</span>
+                    ? <span className='text-gray-500 text-center col-span-full'>Search Job That Suit Your Profile </span>
                     : allJobs.slice(0, 6).map((job) => (
                         <div
                             key={job._id}

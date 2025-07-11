@@ -68,7 +68,7 @@ const Browse = () => {
                         <Job key={job._id} job={job} />
                     ))}
                     {allJobs.length <= 0 ? (
-                        <span className='text-gray-500 text-center col-span-full'>No Job Available</span>
+                        <span className='text-gray-500 text-center col-span-full'>More Jobs Are Available</span>
                     ) : (
                         allJobs.map(job => (
                             <Job key={job._id} job={job} />
