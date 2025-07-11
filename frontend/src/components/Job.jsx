@@ -12,10 +12,12 @@ const Job = ({ job }) => {
     const dispatch = useDispatch();
 
     const daysAgoFunction = (mongodbTime) => {
+        if (!mongodbTime) return 0; // fallback for static / missing date
         const createdAt = new Date(mongodbTime);
+        if (isNaN(createdAt)) return 0;
         const currentTime = new Date();
         const timeDifference = currentTime - createdAt;
-        return Math.floor(timeDifference / (1000 * 24 * 60 * 60));
+        return Math.floor(timeDifference / (1000 * 60 * 60 * 24));
     };
 
     const handleSaveJob = () => {
@@ -45,7 +47,7 @@ const Job = ({ job }) => {
                 <div className='flex items-center gap-2 my-2'>
                     <Button className="p-6" variant="outline" size="icon">
                         <Avatar>
-                            <AvatarImage src={job?.company?.logo} />
+                            <AvatarImage src={job?.company?.logo || ''} />
                         </Avatar>
                     </Button>
                     <div>
@@ -98,7 +100,7 @@ Job.propTypes = {
             name: PropTypes.string.isRequired,
             logo: PropTypes.string,
         }).isRequired,
-        createdAt: PropTypes.string.isRequired,
+        createdAt: PropTypes.string, // not required anymore, fallback handles it
         title: PropTypes.string.isRequired,
         description: PropTypes.string,
         position: PropTypes.number.isRequired,

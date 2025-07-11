@@ -5,22 +5,83 @@ import Job from './Job';
 import { useSelector } from 'react-redux';
 import { motion } from 'framer-motion';
 
+// static fallback jobs
+const staticJobs = [
+    {
+        _id: 'static1',
+        title: "Frontend Developer",
+        description: "Work on React, Tailwind and Redux with a dynamic team.",
+        location: "Bangalore",
+        salary: 15,
+        jobType: "Full-Time",
+        postion: "3",
+    },
+    {
+        _id: 'static2',
+        title: "Backend Developer",
+        description: "Build Node.js REST APIs and work with MongoDB.",
+        location: "Hyderabad",
+        salary: 12,
+        jobType: "Part-Time",
+        postion: "2",
+    },
+    {
+        _id: 'static3',
+        title: "Data Scientist",
+        description: "Develop ML models to predict business metrics.",
+        location: "Remote",
+        salary: 25,
+        jobType: "Remote",
+        postion: "1",
+    },
+    {
+        _id: 'static4',
+        title: "DevOps Engineer",
+        description: "Setup CI/CD pipelines and manage infra.",
+        location: "Pune",
+        salary: 18,
+        jobType: "Contract",
+        postion: "2",
+    },
+    {
+        _id: 'static5',
+        title: "UI/UX Designer",
+        description: "Design intuitive user interfaces.",
+        location: "Delhi",
+        salary: 10,
+        jobType: "Full-Time",
+        postion: "1",
+    },
+    {
+        _id: 'static6',
+        title: "Cloud Engineer",
+        description: "Deploy and manage apps on AWS.",
+        location: "Chennai",
+        salary: 22,
+        jobType: "Full-Time",
+        postion: "2",
+    }
+];
+
 const Jobs = () => {
     const { allJobs, searchedQuery } = useSelector(store => store.job);
-    const [filterJobs, setFilterJobs] = useState(allJobs);
+
+    // if backend didn't load, fallback to static jobs
+    const jobsData = allJobs.length > 0 ? allJobs : staticJobs;
+
+    const [filterJobs, setFilterJobs] = useState(jobsData);
 
     useEffect(() => {
+        let filteredJobs = jobsData;
         if (searchedQuery) {
-            const filteredJobs = allJobs.filter((job) => {
+            filteredJobs = jobsData.filter((job) => {
                 return job.title.toLowerCase().includes(searchedQuery.toLowerCase()) ||
                     job.description.toLowerCase().includes(searchedQuery.toLowerCase()) ||
                     job.location.toLowerCase().includes(searchedQuery.toLowerCase())
             })
-            setFilterJobs(filteredJobs)
-        } else {
-            setFilterJobs(allJobs)
         }
-    }, [allJobs, searchedQuery]);
+        setFilterJobs(filteredJobs);
+    }, [jobsData, searchedQuery]);
 
     return (
         <div>

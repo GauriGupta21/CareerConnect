@@ -1,4 +1,5 @@
 import { useSelector, useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import { removeSavedJob } from '@/redux/jobSlice';
 import { Badge } from 'lucide-react';
 
@@ -44,9 +45,8 @@ const staticSavedJobs = [
 
 const Saved = () => {
     const dispatch = useDispatch();
+    const navigate = useNavigate();
     const savedJobsFromRedux = useSelector((state) => state.job.savedJobs || []);
-
-    // Show user's saved jobs first, then static fallback jobs
     const savedJobs = [...savedJobsFromRedux, ...staticSavedJobs];
 
     const handleRemoveJob = (jobId) => {
@@ -63,8 +63,9 @@ const Saved = () => {
                 {savedJobs.map((job) => (
                     <li
                         key={job._id}
+                        onClick={() => navigate(`/description/${job._id}`)}
                         className="border rounded-lg shadow-md bg-white p-4 flex justify-between items-start 
-                                   transition-transform hover:scale-105 duration-300"
+                                   transition-transform hover:scale-105 duration-300 cursor-pointer hover:bg-gray-100"
                     >
                         <div className="flex-1">
                             <h1 className="font-medium text-lg md:text-xl text-gray-900">{job?.company?.name}</h1>
@@ -85,7 +86,10 @@ const Saved = () => {
                         </div>
                         {savedJobsFromRedux.find((j) => j._id === job._id) && (
                             <button
-                                onClick={() => handleRemoveJob(job._id)}
+                                onClick={(e) => {
+                                    e.stopPropagation();
+                                    handleRemoveJob(job._id);
+                                }}
                                 className="text-red-500 font-bold hover:underline ml-4"
                             >
                                 Remove
