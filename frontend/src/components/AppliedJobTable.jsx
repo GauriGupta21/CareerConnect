@@ -2,7 +2,6 @@ import { Table, TableBody, TableCaption, TableCell, TableHead, TableHeader, Tabl
 import { Badge } from './ui/badge';
 import { useSelector } from 'react-redux';
 
-// Static applied jobs (example data)
 const staticAppliedJobs = [
     {
         _id: 'staticA1',
@@ -30,8 +29,72 @@ const staticAppliedJobs = [
             company: { name: 'Amazon' }
         },
         status: 'rejected'
-    }
+    },
+    {
+        _id: 'staticA4',
+        createdAt: '2025-06-10T09:00:00Z',
+        job: {
+            title: 'DevOps Engineer',
+            company: { name: 'Netflix' }
+        },
+        status: 'pending'
+    },
+    {
+        _id: 'staticA5',
+        createdAt: '2025-06-05T11:30:00Z',
+        job: {
+            title: 'iOS Developer',
+            company: { name: 'Apple' }
+        },
+        status: 'accepted'
+    },
+    {
+        _id: 'staticA6',
+        createdAt: '2025-05-28T13:20:00Z',
+        job: {
+            title: 'Machine Learning Engineer',
+            company: { name: 'Spotify' }
+        },
+        status: 'rejected'
+    },
+    {
+        _id: 'staticA7',
+        createdAt: '2025-05-22T14:45:00Z',
+        job: {
+            title: 'Full Stack Developer',
+            company: { name: 'Uber' }
+        },
+        status: 'pending'
+    },
+    {
+        _id: 'staticA8',
+        createdAt: '2025-05-15T10:05:00Z',
+        job: {
+            title: 'React Developer',
+            company: { name: 'Facebook' }
+        },
+        status: 'accepted'
+    },
+    {
+        _id: 'staticA9',
+        createdAt: '2025-05-08T08:50:00Z',
+        job: {
+            title: 'Security Analyst',
+            company: { name: 'PayPal' }
+        },
+        status: 'pending'
+    },
+    {
+        _id: 'staticA10',
+        createdAt: '2025-05-01T15:15:00Z',
+        job: {
+            title: 'Database Administrator',
+            company: { name: 'Oracle' }
+        },
+        status: 'rejected'
+    },
 ];
+
 
 const AppliedJobTable = () => {
     const { allAppliedJobs } = useSelector(store => store.job);
