@@ -8,9 +8,58 @@ import { setSingleJob } from '@/redux/jobSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import { toast } from 'sonner';
 
+// static fallback jobs
+const staticJobs = [
+    {
+        title: "Frontend Developer",
+        postion: "3",
+        jobType: "Full-Time",
+        salary: 15,
+        location: "Bangalore",
+        description: "Work on React, Tailwind and Redux with a dynamic team. Collaborate with designers to create beautiful UIs.",
+        experience: 2,
+        applications: [{ applicant: "u1" }, { applicant: "u2" }],
+        createdAt: "2025-07-05T09:00:00Z"
+    },
+    {
+        title: "Backend Developer",
+        postion: "2",
+        jobType: "Part-Time",
+        salary: 12,
+        location: "Hyderabad",
+        description: "Develop REST APIs with Node.js and MongoDB. Optimize database performance.",
+        experience: 3,
+        applications: [{ applicant: "u3" }],
+        createdAt: "2025-06-20T09:00:00Z"
+    },
+    {
+        title: "Data Scientist",
+        postion: "1",
+        jobType: "Remote",
+        salary: 25,
+        location: "Remote",
+        description: "Build ML models to predict customer behavior. Work with big data pipelines.",
+        experience: 4,
+        applications: [{ applicant: "u4" }],
+        createdAt: "2025-07-01T09:00:00Z"
+    },
+    {
+        title: "DevOps Engineer",
+        postion: "2",
+        jobType: "Contract",
+        salary: 18,
+        location: "Pune",
+        description: "Setup CI/CD with Jenkins and Kubernetes. Maintain infra.",
+        experience: 3,
+        applications: [],
+        createdAt: "2025-07-03T09:00:00Z"
+    }
+];
+
 const JobDescription = () => {
     const { singleJob } = useSelector(store => store.job);
     const { user } = useSelector(store => store.auth);
+
     const isIntiallyApplied = singleJob?.applications?.some(application => application.applicant === user?._id) || false;
     const [isApplied, setIsApplied] = useState(isIntiallyApplied);
     const [showFullDescription, setShowFullDescription] = useState(false);
@@ -33,7 +82,7 @@ const JobDescription = () => {
             }
         } catch (error) {
             console.log(error);
-            toast.error(error.response.data.message);
+            toast.error(error.response?.data?.message || "Something went wrong");
         }
     }
 
@@ -46,7 +95,11 @@ const JobDescription = () => {
                     setIsApplied(res.data.job.applications.some(application => application.applicant === user?._id));
                 }
             } catch (error) {
-                console.log(error);
+                console.log("Backend failed. Using static job.");
+                // fallback: pick a random static job
+                const randomStaticJob = staticJobs[Math.floor(Math.random() * staticJobs.length)];
+                dispatch(setSingleJob(randomStaticJob));
+                setIsApplied(randomStaticJob.applications.some(application => application.applicant === user?._id));
             }
         }
         fetchSingleJob();
@@ -93,22 +146,22 @@ const JobDescription = () => {
                         <p><span className='font-bold'>Role:</span> <span className='ml-2'>{singleJob?.title}</span></p>
                         <p><span className='font-bold'>Location:</span> <span className='ml-2'>{singleJob?.location}</span></p>
                         
-                       <div>
-    <p className='font-bold'>Description:</p>
-    <div 
-        className={`ml-4 text-gray-800 transition-all duration-300 ease-in-out 
-            ${showFullDescription ? 'max-h-full' : 'max-h-24 overflow-hidden'}`}>
-        {singleJob?.description}
-    </div>
-    {singleJob?.description?.length > 100 && (
-        <button 
-            className='ml-4 mt-1 text-sm text-purple-600 hover:underline'
-            onClick={() => setShowFullDescription(!showFullDescription)}
-        >
-            {showFullDescription ? 'Read less' : 'Read more'}
-        </button>
-    )}
-</div>
+                        <div>
+                            <p className='font-bold'>Description:</p>
+                            <div 
+                                className={`ml-4 text-gray-800 transition-all duration-300 ease-in-out 
+                                    ${showFullDescription ? 'max-h-full' : 'max-h-24 overflow-hidden'}`}>
+                                {singleJob?.description}
+                            </div>
+                            {singleJob?.description?.length > 100 && (
+                                <button 
+                                    className='ml-4 mt-1 text-sm text-purple-600 hover:underline'
+                                    onClick={() => setShowFullDescription(!showFullDescription)}
+                                >
+                                    {showFullDescription ? 'Read less' : 'Read more'}
+                                </button>
+                            )}
+                        </div>
 
                         <p><span className='font-bold'>Experience:</span> <span className='ml-2'>{singleJob?.experience} yrs</span></p>
                         <p><span className='font-bold'>Salary:</span> <span className='ml-2'>{singleJob?.salary} LPA</span></p>
